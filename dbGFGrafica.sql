@@ -30,14 +30,6 @@ cnpj varchar(30) unique,
 primary key (idForn)
 ); 
 
-create table tbProduto(
-idProd int not null auto_increment,
-nome varchar(50),
-descricao varchar (100),
-quant varchar(25),
-primary key (idProd)
-);
-
 
 create table tbCliente(
 idCli int not null auto_increment,
@@ -45,6 +37,7 @@ nome varchar(30),
 cpf_cnpj varchar(30) unique,
 telefone varchar(20) unique,
 email varchar(30),
+senha varchar(30),
 logradouro varchar(30),
 numero varchar(15),
 bairro varchar(30),
@@ -62,11 +55,22 @@ primary key (idUsu),
 foreign key (idFunc) references tbFuncionario (idFunc)
 );
 
+create table tbProduto(
+idProd int not null auto_increment,
+idForn int not null,
+nome varchar(50),
+quant int,
+dataEntrada date,
+primary key (idProd),
+foreign key (idForn) references tbFornecedores (idForn)
+);
+
+
 create table tbVenda(
 idVenda int not null auto_increment,
 idCli int not null,
 idUsu int not null,
-idProd int not null,
+ProdVend varchar (50),
 dataPedido date,
 valor decimal(10,2),
 Estatus varchar(30),
@@ -75,12 +79,10 @@ dataEntrega date,
 FormaPagamento varchar (30),
 primary key (idVenda),
 foreign key (idCli) references tbCliente (idCli),
-foreign key (idUsu) references tbUsuario (idUsu),
-foreign key (idProd) references tbProduto (idProd)
+foreign key (idUsu) references tbUsuario (idUsu)
 );
 
 show tables;
-
 
 desc tbVenda;
 desc tbFuncionario;
@@ -93,28 +95,28 @@ insert into tbFuncionario(nome,cpf,telCel,salario,cargo,carteiraTrabalho,logrado
 values("Adriana","187-478-658-47","11 97365-7985", 2000.00, "Dona Da Empresa","187-478-658-47","Rua: Antonio Carmim","05831-876",47,"Jardim Teles");
 
 insert into tbFornecedores(nome,logradouro,cep,numero,bairro,cnpj)
-values("A4 Folhas","Rua: Jasmin Roles","07943-789","874","Jardim Rosa","20.414.574-1000-04");
+values("Advance","Rua: Jasmin Roles","07943-789","874","Jardim Rosa","20.414.574-1000-04");
 
-insert into tbCliente(nome,cpf_cnpj,telefone,email,logradouro,numero,bairro,cep)
-values ("Rodrigo Silva Santos","737-785-203-93","11-97689-2054","rodrigo.silvas@gmail.com","Rua: José Rodrigues","604","Jardim Tule Alves","07989-432");
+insert into tbFornecedores(nome,logradouro,cep,numero,bairro,cnpj)
+values("DupliCop","Rua: Ana Tira","07343-832","874","Jardim Rui","30.414.364-1000-78");
 
-insert into tbUsuario(idFunc,nome,email,senha)
+insert into tbCliente(nome,cpf_cnpj,telefone,email,senha,logradouro,numero,bairro,cep)
+values ("Rodrigo Silva Santos","737-785-203-93","11-97689-2054","rodrigo.silvas@gmail.com","12489","Rua: Jose Rodrigues","604","Jardim Tule Alves","07989-432");
+
+insert into tbUsuario(idFunc ,nome,email,senha)
 values (1,"Adriana","adrianagf.grafica@hotmail.com","078947");
 
-insert into tbProduto(nome,descricao,quant)
-values ("Folheto","Papel couche 150g, 4x4 cores, formato 10x14cm",1000);
+insert into tbProduto(idForn,nome,quant,dataEntrada)
+values (1,"Folha A5",150,'2024/02/08');
 
-insert into tbProduto(nome,descricao,quant)
-values ("Banner","formato 90x60cm 4x0 cores lona 340g",1);
+insert into tbProduto(idForn,nome,quant,dataEntrada)
+values (1,"Folha A4",200,'2024/07/30');
 
-insert into tbProduto(nome,descricao,quant)
-values ("Cartões de Visita","formato 90x60cm 4x0 cores lona 340g",1000);
+insert into tbProduto(idForn,nome,quant,dataEntrada)
+values (2,"Tinta",20,'2024/10/20');
 
-insert into tbProduto(nome,descricao,quant)
-values ("Blocos de pedido","formato 21x15cm, 1x0 cor, off-set 75g",10);
-
-insert into tbVenda (idCli,idUsu,idProd,dataPedido,valor,Estatus,observacao,dataEntrega,FormaPagamento)
-values (1, 1, 1,'01/02/2024',200.00, "pronto", "nao molhar", '05/02/2024', 'Faturado');
+insert into tbVenda (idCli,idUsu,ProdVend,dataPedido,valor,Estatus,observacao,dataEntrega,FormaPagamento)
+values (1,1,"Folheto",'2024/10/18',200.00, "pronto", "nao molhar", '05/02/2024', 'Faturado');
 
 
 
