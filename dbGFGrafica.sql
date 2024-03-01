@@ -45,6 +45,12 @@ cep varchar(15),
 primary key (idCli)
 );
 
+create table tbProdFinal(
+idProdFinal int not null auto_increment,
+nome varchar (45),
+primary key (idProdFinal)
+);
+
 create table tbUsuario(
 idUsu int not null auto_increment,
 idFunc int not null,
@@ -70,6 +76,7 @@ create table tbVenda(
 idVenda int not null auto_increment,
 idCli int not null,
 idUsu int not null,
+idProdFinal int not null,
 ProdVend varchar (50),
 quant int,
 dataPedido date,
@@ -80,7 +87,8 @@ dataEntrega date,
 FormaPagamento varchar (30),
 primary key (idVenda),
 foreign key (idCli) references tbCliente (idCli),
-foreign key (idUsu) references tbUsuario (idUsu)
+foreign key (idUsu) references tbUsuario (idUsu),
+foreign key (idProdFinal) references tbProdFinal (idProdFinal)
 );
 
 show tables;
@@ -89,6 +97,7 @@ desc tbVenda;
 desc tbFuncionario;
 desc tbUsuario;
 desc tbFornecedores;
+desc tbProdFinal;
 desc tbCliente;
 desc tbProduto;
 
@@ -104,6 +113,9 @@ values("DupliCop","Rua: Ana Tira","07343-832","874","Jardim Rui","30.414.364-100
 insert into tbCliente(nome,cpf_cnpj,telefone,email,senha,logradouro,numero,bairro,cep)
 values ("Rodrigo Silva Santos","737-785-203-93","11-97689-2054","rodrigo.silvas@gmail.com","12489","Rua: Jose Rodrigues","604","Jardim Tule Alves","07989-432");
 
+insert into tbProdFinal(nome)
+values("Folheto");
+
 insert into tbUsuario(idFunc ,nome,email,senha)
 values (1,"Adriana","adrianagf.grafica@hotmail.com","078947");
 
@@ -116,15 +128,16 @@ values (1,"Folha A4",200,'2024/07/30');
 insert into tbProduto(idForn,nome,quant,dataEntrada)
 values (2,"Tinta",20,'2024/10/20');
 
-insert into tbVenda (idCli,idUsu,ProdVend,quant,dataPedido,valor,Estatus,observacao,dataEntrega,FormaPagamento)
-values (1,1,"Folheto",10,'2024/10/18',200.00, "pronto", "nao molhar", '2024/10/30', 'Faturado');
+insert into tbVenda (idCli,idUsu,idProdFinal,ProdVend,quant,dataPedido,valor,Estatus,observacao,dataEntrega,FormaPagamento)
+values (1,1,1,"Folheto",10,'2024/10/18',200.00, "pronto", "nao molhar", '2024/10/30', 'Faturado');
 
 
 
 select * from tbFuncionario;
 select * from tbFornecedores;
-select * from tbUsuario;
 select * from tbCliente;
+select * from tbProdFinal;
+select * from tbUsuario;
 select * from tbProduto;
 select * from tbVenda;
 
