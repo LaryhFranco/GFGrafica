@@ -71,6 +71,7 @@ idVenda int not null auto_increment,
 idCli int not null,
 idUsu int not null,
 ProdVend varchar (50),
+quant int,
 dataPedido date,
 valor decimal(10,2),
 Estatus varchar(30),
@@ -115,8 +116,8 @@ values (1,"Folha A4",200,'2024/07/30');
 insert into tbProduto(idForn,nome,quant,dataEntrada)
 values (2,"Tinta",20,'2024/10/20');
 
-insert into tbVenda (idCli,idUsu,ProdVend,dataPedido,valor,Estatus,observacao,dataEntrega,FormaPagamento)
-values (1,1,"Folheto",'2024/10/18',200.00, "pronto", "nao molhar", '05/02/2024', 'Faturado');
+insert into tbVenda (idCli,idUsu,ProdVend,quant,dataPedido,valor,Estatus,observacao,dataEntrega,FormaPagamento)
+values (1,1,"Folheto",10,'2024/10/18',200.00, "pronto", "nao molhar", '05/02/2024', 'Faturado');
 
 
 
