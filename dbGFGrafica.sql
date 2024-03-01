@@ -117,7 +117,7 @@ insert into tbProduto(idForn,nome,quant,dataEntrada)
 values (2,"Tinta",20,'2024/10/20');
 
 insert into tbVenda (idCli,idUsu,ProdVend,quant,dataPedido,valor,Estatus,observacao,dataEntrega,FormaPagamento)
-values (1,1,"Folheto",10,'2024/10/18',200.00, "pronto", "nao molhar", '05/02/2024', 'Faturado');
+values (1,1,"Folheto",10,'2024/10/18',200.00, "pronto", "nao molhar", '2024/10/19', 'Faturado');
 
 
 
