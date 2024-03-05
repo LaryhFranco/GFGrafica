@@ -111,7 +111,7 @@ insert into tbFornecedores(nome,logradouro,cep,numero,bairro,cnpj)
 values("DupliCop","Rua: Ana Tira","07343-832","874","Jardim Rui","30.414.364-1000-78");
 
 insert into tbCliente(nome,cpf_cnpj,telefone,email,senha,logradouro,numero,bairro,cep)
-values ("Rodrigo Silva Santos","737-785-203-93","11-97689-2054","rodrigo.silvas@gmail.com","12489","Rua: Jose Rodrigues","604","Jardim Tule Alves","07989-432");
+values ("Rodrigo Silva Santos","737-785-203-93","11-97689-2054","rodrigo.silvas@gmail.com","12489","Rua: Jose Rodrigues",604,"Jardim Tule Alves","07989-432");
 
 insert into tbProdFinal(nome)
 values("Folheto");
