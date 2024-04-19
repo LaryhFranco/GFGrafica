@@ -129,6 +129,9 @@ values("Adriana",'F',"187-478-658-47","11 97365-7985", 2000.00, "Dona Da Empresa
 insert into tbFornecedorPapel(nome,quant,logradouro,cep,numero,bairro,cnpj)
 values("Advance",100,"Rua: Jasmin Roles","07943-789","874","Jardim Rosa","20.414.574-1000-04");
 
+insert into tbFornecedorPapel(nome,quant,logradouro,cep,numero,bairro,cnpj)
+values("PapelMais",150,"Rua: Rita Pol ","07841-647","30","Jardim Mine Tera","57.579.468-1900-14");
+
 insert into tbFornecedorTinta(nome,quant,logradouro,cep,numero,bairro,cnpj)
 values("DupliCop",100,"Rua: Ana Tira","07343-832","874","Jardim Rui","30.414.364-1000-78");
 
@@ -171,6 +174,8 @@ select * from tbVenda;
 -- somando registros nas tabela
 
 select sum(quant) from tbFornecedorTinta;
+
+select sum(quant) from tbFornecedorPapel;
 -- alterando registros nas tabela
 
 update tbVenda set valor = 240.00 where idCli = 1;
